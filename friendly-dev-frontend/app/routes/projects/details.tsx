@@ -1,15 +1,45 @@
 
 import type {Route} from "./+types/details";
-import type { Project } from "~/types";
+import type { Project, StrapiProject } from "~/types";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
 
-export async function clientLoader({request, params}:Route.ClientLoaderArgs):Promise<Project> {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/projects/${params.id}`);
+export async function loader({
+    request, 
+    params,
+}:Route.LoaderArgs):Promise<Project> {
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:1337/api";
+    const strapiUrl = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
+
+    const res = await fetch(`${apiUrl}/projects/${params.id}?populate=image`);
 
     if(!res.ok) throw new Response('Project not found', {status:404});
 
-    const project:Project = await res.json();
+    const json: { data: StrapiProject; meta?: any } = await res.json();
+    const p = json.data;
+
+    const rawImageUrl =
+        p.image?.formats?.medium?.url ??
+        p.image?.formats?.small?.url ??
+        p.image?.url ??
+        "";
+
+    const image = rawImageUrl
+        ? `${strapiUrl}${rawImageUrl}`
+        : "/images/no-image.png";
+
+    const project: Project = {
+        id: String(p.id),
+        documentId: p.documentId,
+        title: p.title,
+        description: p.description,
+        image,
+        url: p.url,
+        date: p.date,
+        category: p.category,
+        featured: p.featured,
+    };
+
     return project;
 };
 
@@ -17,8 +47,10 @@ export function HydrateFallback() {
     return <img src="/spinner.gif" alt="Loadding..."/>;
 }
 
-const formatDate = (isoDate: string) => {
-  const [year, month, day] = isoDate.split('T')[0].split('-');
+const formatDate = (isoDate?: string) => {
+  if (!isoDate) return "";
+
+  const [year, month, day] = isoDate.split("T")[0].split("-");
   return `${day}/${month}/${year}`;
 };
 
