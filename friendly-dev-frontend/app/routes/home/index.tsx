@@ -58,11 +58,12 @@ export async function loader({
   }));
 
   const posts = postsJson.data.map((item) => ({
-    id: item.id,
+    id: String(item.id), 
     slug: item.slug,
     title: item.title,
     excerpt: item.excerpt,
     date: item.date,
+    body: item.body,
     image: item.image?.url
       ? `${item.image.url}`
       : '/images/no-image.png',
