@@ -22,11 +22,12 @@ export type Post = {
 };
 
 export type PostMeta = {
-  id: string;
+  id: number;
   slug: string;
   title: string;
   excerpt: string;
   date: string;
+  image: string;
 };
 
 export type StrapiResponse<T> = {
@@ -54,10 +55,9 @@ export type StrapiProject = {
 };
 
 export type StrapiPost = {
-  id: string;
-  documentId: string;
-  title: string;
+  id: number;
   slug: string;
+  title: string;
   excerpt: string;
   date: string;
   body: string;

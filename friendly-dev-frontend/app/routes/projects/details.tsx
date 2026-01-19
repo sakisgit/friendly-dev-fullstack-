@@ -9,14 +9,20 @@ export async function loader({
     params,
 }:Route.LoaderArgs):Promise<Project> {
     const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:1337/api";
-    const strapiUrl = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
+    const documentId = params.documentId;
 
-    const res = await fetch(`${apiUrl}/projects/${params.id}?populate=image`);
+    // Fetch by documentId using filter
+    const res = await fetch(`${apiUrl}/projects?filters[documentId][$eq]=${documentId}&populate=image`);
 
     if(!res.ok) throw new Response('Project not found', {status:404});
 
-    const json: { data: StrapiProject; meta?: any } = await res.json();
-    const p = json.data;
+    const json: { data: StrapiProject[]; meta?: any } = await res.json();
+    
+    if (!json.data || json.data.length === 0) {
+        throw new Response('Project not found', {status:404});
+    }
+    
+    const p = json.data[0];
 
     const rawImageUrl =
         p.image?.formats?.medium?.url ??
@@ -25,7 +31,7 @@ export async function loader({
         "";
 
     const image = rawImageUrl
-        ? `${strapiUrl}${rawImageUrl}`
+        ? `${rawImageUrl}`
         : "/images/no-image.png";
 
     const project: Project = {

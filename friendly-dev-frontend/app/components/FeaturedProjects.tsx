@@ -10,6 +10,7 @@ type FeaturedProjectsProps = {
 
 const FeaturedProjects = ({projects, count=4}:FeaturedProjectsProps) => {
     const featured = projects.filter((p) => p.featured).slice(0, count);
+    if(featured.length === 0) return null;
 
   return (
     <section>

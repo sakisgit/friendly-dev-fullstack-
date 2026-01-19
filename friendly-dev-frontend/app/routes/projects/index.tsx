@@ -18,16 +18,16 @@ export async function loader({ request }: Route.LoaderArgs): Promise<{ projects:
   const json:StrapiResponse<StrapiProject> = await res.json();
 
   const projects = json.data.map((item)=> ({
-      id:item.id,
+      id: String(item.id),
       documentId:item.documentId,
       title: item.title,
       description: item.description,
-      image:item.image?.url ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}` : 'image/no-image.png',
+      image:item.image?.url ? `${item.image.url}` : '/images/no-image.png',
       url: item.url,
       date: item.date,
       category: item.category,
       featured: item.featured
-  })); 
+  }));  
 
   return {projects:projects};
 }
