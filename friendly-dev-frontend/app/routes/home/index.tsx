@@ -10,6 +10,7 @@ import type {
   StrapiProject,
   StrapiPost,
 } from "~/types";
+import { getApiUrl } from "~/lib/api";
 
 
 export function meta({}: Route.MetaArgs) {
@@ -23,17 +24,10 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[]; posts: Post[] }> {
+  const apiUrl = getApiUrl();
   const [projectsRes, postsRes] = await Promise.all([
-    fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/projects?filters[featured][$eq]=true&populate=*`
-    ),
-    fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/posts?sort[0]=date:desc&pagination[limit]=3&populate=image`
-    ),
+    fetch(`${apiUrl}/projects?filters[featured][$eq]=true&populate=*`),
+    fetch(`${apiUrl}/posts?sort[0]=date:desc&pagination[limit]=3&populate=image`),
   ]);
 
   if (!projectsRes.ok || !postsRes.ok) {

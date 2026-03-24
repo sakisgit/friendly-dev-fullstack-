@@ -5,6 +5,7 @@ import type { Project, StrapiProject, StrapiResponse } from '~/types';
 import ProjectCard from '~/components/ProjectCard';
 import Pagination from '~/components/Pagination';
 import { AnimatePresence, motion } from 'framer-motion';
+import { getApiUrl } from '~/lib/api';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,7 +15,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({ request }: Route.LoaderArgs): Promise<{ projects: Project[] }>{
-  const res= await fetch(`${import.meta.env.VITE_API_URL}/projects?populate=*`);
+  const apiUrl = getApiUrl();
+  const res= await fetch(`${apiUrl}/projects?populate=*`);
   const json:StrapiResponse<StrapiProject> = await res.json();
 
   const projects = json.data.map((item)=> ({

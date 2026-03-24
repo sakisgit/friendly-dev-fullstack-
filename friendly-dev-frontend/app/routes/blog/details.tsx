@@ -2,14 +2,14 @@
 import type { Route } from './+types/details';
 import type { StrapiResponse, StrapiPost, PostMeta } from '~/types';
 import { Link } from 'react-router';
+import { getApiUrl } from '~/lib/api';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { slug } = params;
+  const apiUrl = getApiUrl();
 
   const res = await fetch(
-    `${
-      import.meta.env.VITE_API_URL
-    }/posts?filters[slug][$eq]=${slug}&populate=image`
+    `${apiUrl}/posts?filters[slug][$eq]=${slug}&populate=image`
   );
 
   if (!res.ok) {

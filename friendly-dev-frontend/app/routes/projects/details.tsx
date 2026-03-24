@@ -3,12 +3,13 @@ import type {Route} from "./+types/details";
 import type { Project, StrapiProject } from "~/types";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
+import { getApiUrl } from "~/lib/api";
 
 export async function loader({
     request, 
     params,
 }:Route.LoaderArgs):Promise<Project> {
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:1337/api";
+    const apiUrl = getApiUrl();
     const documentId = params.documentId;
 
     // Fetch by documentId using filter

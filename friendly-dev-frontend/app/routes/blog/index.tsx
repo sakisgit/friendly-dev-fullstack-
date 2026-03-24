@@ -5,14 +5,14 @@ import type { PostMeta, StrapiResponse, StrapiPost } from "~/types";
 import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
+import { getApiUrl } from "~/lib/api";
 
 
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/posts?populate=image&sort=date:desc`
-  );
+  const apiUrl = getApiUrl();
+  const res = await fetch(`${apiUrl}/posts?populate=image&sort=date:desc`);
 
   if (!res.ok) {
     throw new Error('Failed to fetch posts');
