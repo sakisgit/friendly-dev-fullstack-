@@ -1,0 +1,242 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "root": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/home/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/about/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/contact/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/projects/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/projects/details": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/blog/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/blog/details": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/errors/notFound": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "app/root.tsx",
+        "path": "",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/layouts/home": {
+        "id": "routes/layouts/home",
+        "parentId": "root",
+        "file": "app/routes/layouts/home.tsx",
+        "config": {}
+      },
+      "routes/home/index": {
+        "id": "routes/home/index",
+        "parentId": "routes/layouts/home",
+        "file": "app/routes/home/index.tsx",
+        "index": true,
+        "config": {}
+      },
+      "routes/layouts/main": {
+        "id": "routes/layouts/main",
+        "parentId": "root",
+        "file": "app/routes/layouts/main.tsx",
+        "config": {}
+      },
+      "routes/about/index": {
+        "id": "routes/about/index",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/about/index.tsx",
+        "path": "about",
+        "config": {}
+      },
+      "routes/contact/index": {
+        "id": "routes/contact/index",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/contact/index.tsx",
+        "path": "contact",
+        "config": {}
+      },
+      "routes/projects/index": {
+        "id": "routes/projects/index",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/projects/index.tsx",
+        "path": "projects",
+        "config": {}
+      },
+      "routes/projects/details": {
+        "id": "routes/projects/details",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/projects/details.tsx",
+        "path": "projects/:documentId",
+        "config": {}
+      },
+      "routes/blog/index": {
+        "id": "routes/blog/index",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/blog/index.tsx",
+        "path": "blog",
+        "config": {}
+      },
+      "routes/blog/details": {
+        "id": "routes/blog/details",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/blog/details.tsx",
+        "path": "blog/:slug",
+        "config": {}
+      },
+      "routes/errors/notFound": {
+        "id": "routes/errors/notFound",
+        "parentId": "routes/layouts/main",
+        "file": "app/routes/errors/notFound.tsx",
+        "path": "*",
+        "config": {}
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/Users/sakisbog/Desktop/Projects/GitHub/reactPr/friendly-dev/friendly-dev-frontend/app",
+    "basename": "/",
+    "buildDirectory": "/Users/sakisbog/Desktop/Projects/GitHub/reactPr/friendly-dev/friendly-dev-frontend/build",
+    "future": {
+      "unstable_middleware": false,
+      "unstable_optimizeDeps": false,
+      "unstable_splitRouteModules": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "root.tsx",
+        "path": ""
+      },
+      "routes/layouts/home": {
+        "id": "routes/layouts/home",
+        "parentId": "root",
+        "file": "./routes/layouts/home.tsx"
+      },
+      "routes/home/index": {
+        "id": "routes/home/index",
+        "parentId": "routes/layouts/home",
+        "file": "routes/home/index.tsx",
+        "index": true
+      },
+      "routes/layouts/main": {
+        "id": "routes/layouts/main",
+        "parentId": "root",
+        "file": "./routes/layouts/main.tsx"
+      },
+      "routes/about/index": {
+        "id": "routes/about/index",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/about/index.tsx",
+        "path": "about"
+      },
+      "routes/contact/index": {
+        "id": "routes/contact/index",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/contact/index.tsx",
+        "path": "contact"
+      },
+      "routes/projects/index": {
+        "id": "routes/projects/index",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/projects/index.tsx",
+        "path": "projects"
+      },
+      "routes/projects/details": {
+        "id": "routes/projects/details",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/projects/details.tsx",
+        "path": "projects/:documentId"
+      },
+      "routes/blog/index": {
+        "id": "routes/blog/index",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/blog/index.tsx",
+        "path": "blog"
+      },
+      "routes/blog/details": {
+        "id": "routes/blog/details",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/blog/details.tsx",
+        "path": "blog/:slug"
+      },
+      "routes/errors/notFound": {
+        "id": "routes/errors/notFound",
+        "parentId": "routes/layouts/main",
+        "file": "./routes/errors/notFound.tsx",
+        "path": "*"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "./routes/layouts/home.tsx",
+            "children": [
+              {
+                "file": "routes/home/index.tsx",
+                "index": true
+              }
+            ]
+          },
+          {
+            "file": "./routes/layouts/main.tsx",
+            "children": [
+              {
+                "file": "./routes/about/index.tsx",
+                "path": "about"
+              },
+              {
+                "file": "./routes/contact/index.tsx",
+                "path": "contact"
+              },
+              {
+                "file": "./routes/projects/index.tsx",
+                "path": "projects"
+              },
+              {
+                "file": "./routes/projects/details.tsx",
+                "path": "projects/:documentId"
+              },
+              {
+                "file": "./routes/blog/index.tsx",
+                "path": "blog"
+              },
+              {
+                "file": "./routes/blog/details.tsx",
+                "path": "blog/:slug"
+              },
+              {
+                "file": "./routes/errors/notFound.tsx",
+                "path": "*"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}
