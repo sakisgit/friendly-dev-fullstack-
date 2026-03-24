@@ -1,0 +1,13 @@
+{
+  "name": "friendly-dev-monorepo",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix friendly-dev-backend install",
+    "build": "npm --prefix friendly-dev-backend run build",
+    "start": "npm --prefix friendly-dev-backend run start",
+    "dev": "npm --prefix friendly-dev-backend run develop"
+  },
+  "engines": {
+    "node": ">=20.0.0 <=24.x.x"
+  }
+}
