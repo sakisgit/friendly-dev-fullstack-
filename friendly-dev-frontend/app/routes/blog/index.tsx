@@ -12,27 +12,26 @@ export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
   const apiUrl = getApiUrl();
-  const res = await fetch(`${apiUrl}/posts?populate=image&sort=date:desc`);
+  try {
+    const res = await fetch(`${apiUrl}/posts?populate=image&sort=date:desc`);
+    if (!res.ok) {
+      return { posts: [] };
+    }
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch posts');
+    const json: StrapiResponse<StrapiPost> = await res.json();
+    const posts = json.data.map((item) => ({
+      id: item.id,
+      title: item.title,
+      excerpt: item.excerpt,
+      slug: item.slug,
+      date: item.date,
+      body: item.body,
+      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+    }));
+    return { posts };
+  } catch {
+    return { posts: [] };
   }
-
-  const json: StrapiResponse<StrapiPost> = await res.json();
-
-  const posts = json.data.map((item) => ({
-    id: item.id,
-    title: item.title,
-    excerpt: item.excerpt,
-    slug: item.slug,
-    date: item.date,
-    body: item.body,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
-  }));
-
-  return { posts };
 };
 
 const BlogPage = ({loaderData}:Route.ComponentProps) => {

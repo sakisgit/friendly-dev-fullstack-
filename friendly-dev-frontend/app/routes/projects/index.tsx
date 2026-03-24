@@ -16,22 +16,29 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({ request }: Route.LoaderArgs): Promise<{ projects: Project[] }>{
   const apiUrl = getApiUrl();
-  const res= await fetch(`${apiUrl}/projects?populate=*`);
-  const json:StrapiResponse<StrapiProject> = await res.json();
+  try {
+    const res = await fetch(`${apiUrl}/projects?populate=*`);
+    if (!res.ok) {
+      return { projects: [] };
+    }
+    const json: StrapiResponse<StrapiProject> = await res.json();
 
-  const projects = json.data.map((item)=> ({
+    const projects = json.data.map((item) => ({
       id: String(item.id),
-      documentId:item.documentId,
+      documentId: item.documentId,
       title: item.title,
       description: item.description,
-      image:item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
       url: item.url,
       date: item.date,
       category: item.category,
       featured: item.featured
-  }));  
+    }));
 
-  return {projects:projects};
+    return { projects };
+  } catch {
+    return { projects: [] };
+  }
 }
 
 const ProjectsPage = ({ loaderData }: Route.ComponentProps ) => {
