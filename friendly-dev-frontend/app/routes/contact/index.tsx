@@ -1,7 +1,22 @@
 
+import { useEffect, useRef } from "react";
 import type { Route } from "./+types";
 
-const ContactPage = ({actionData}: Route.ComponentProps) => {
+const ContactPage = ({}: Route.ComponentProps) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const resetForm = () => {
+      formRef.current?.reset();
+    };
+
+    // Clear fields on first render.
+    resetForm();
+
+    // Also clear fields when returning via browser history cache.
+    window.addEventListener("pageshow", resetForm);
+    return () => window.removeEventListener("pageshow", resetForm);
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto mt-12 px-6 py-8 bg-gray-900">
@@ -10,9 +25,11 @@ const ContactPage = ({actionData}: Route.ComponentProps) => {
         </h2>
 
         <form 
+          ref={formRef}
           action='https://formspree.io/f/meeekpdk'
           method='post'
           className="space-y-6"
+          autoComplete="off"
         >
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-300">Full Name</label>
