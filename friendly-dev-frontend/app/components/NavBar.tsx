@@ -19,7 +19,7 @@ const NavBar = () => {
             >
                 <FaLaptopCode className='text-blue-400 text-xl cursor-pointer'/>
                 <span>
-                    The Friendly Developer
+                    Sakis Dev Lab
                 </span>
             </NavLink>
 

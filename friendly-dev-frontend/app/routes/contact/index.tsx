@@ -1,6 +1,13 @@
 
 import type { Route } from "./+types";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Sakis Dev Lab | Contact" },
+    { name: "description", content: "Custom website development" },
+  ];
+}
+
 const ContactPage = ({actionData}: Route.ComponentProps) => {
 
   return (

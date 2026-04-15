@@ -9,7 +9,7 @@ import { getApiUrl } from '~/lib/api';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The Friendly Dev | Projects" },
+    { title: "Sakis Dev Lab | Projects" },
     { name: "description", content: "My website project portfolio" },
   ];
 }

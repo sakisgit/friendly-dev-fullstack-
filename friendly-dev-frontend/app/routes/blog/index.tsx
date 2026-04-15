@@ -7,6 +7,13 @@ import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
 import { getApiUrl } from "~/lib/api";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Sakis Dev Lab | Blog" },
+    { name: "description", content: "Custom website development" },
+  ];
+}
+
 
 export async function loader({
   request,

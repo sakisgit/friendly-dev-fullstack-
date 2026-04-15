@@ -15,7 +15,7 @@ import { getApiUrl } from "~/lib/api";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The Friendly Dev" },
+    { title: "Sakis Dev Lab" },
     { name: "description", 
       content: "Custom website development" },
   ];

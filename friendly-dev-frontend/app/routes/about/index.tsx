@@ -2,6 +2,15 @@
 
 
 
+import type { Route } from "./+types/index";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Sakis Dev Lab | About" },
+    { name: "description", content: "Custom website development" },
+  ];
+}
+
 const AboutPage = () => {
   return (
     <div className='max-w-5xl mx-auto px-6 py-16 bg-gray-900'>

@@ -13,6 +13,7 @@ import NavBar from "./components/NavBar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: "icon", type: "image/png", href: "/develop.png" },
   {
     rel: "preconnect",
     href: "https://fonts.gstatic.com",
@@ -26,7 +27,7 @@ export const links: Route.LinksFunction = () => [
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The Friendly Dev" },
+    { title: "Sakis Dev Lab" },
     { name: "description", content: "Custom website development" },
   ];
 }

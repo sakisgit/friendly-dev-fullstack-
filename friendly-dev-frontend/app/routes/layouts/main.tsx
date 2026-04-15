@@ -5,7 +5,7 @@ import type { Route } from '../about/+types';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The Friendly Dev" },
+    { title: "Sakis Dev Lab" },
     { name: "description", content: "Custom website development" },
   ];
 }
