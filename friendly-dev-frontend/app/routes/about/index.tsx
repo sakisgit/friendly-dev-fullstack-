@@ -15,25 +15,23 @@ const AboutPage = () => {
         />
         <div>
           <h1 className='text-3xl font-bold text-white mb-2'>
-            Hey, I'm Brad 👋
+            Hey, I'm Sakis 👋
           </h1>
           <p className='text-gray-300 text-lg'>
-            I'm a passionate web developer and content creator who loves
-            building friendly digital experiences and helping others grow into
-            confident, modern developers.
+            I’m a Junior Web Developer who enjoys building modern, 
+            user-friendly web and mobile applications.
           </p>
         </div>
       </div>
 
       {/* Bio Section */}
       <div className='mb-12'>
-        <h2 className='text-2xl font-semibold text-white mb-4'>My Mission</h2>
+        <h2 className='text-2xl font-semibold text-white mb-4'>My Goal</h2>
         <p className='text-gray-300 leading-relaxed'>
-          After turning my life around, I made it my mission to share what I’ve
-          learned with others — not just about code, but about building a life
-          you’re proud of. Through tutorials, courses, and real-world projects,
-          I aim to make development accessible, friendly, and something you look
-          forward to each day.
+          My goal is to grow as a developer by building real-world web and mobile applications, 
+          improving my technical skills, and gaining hands-on experience. 
+          I aim to become a full-stack developer and contribute to meaningful projects 
+          in a professional environment.
         </p>
       </div>
 
@@ -42,16 +40,17 @@ const AboutPage = () => {
       <ul className='flex flex-wrap gap-4 text-sm text-gray-300'>
         {[
           'React',
-          'Next.js',
-          'Vue',
+          'React Native',
+          'JavaScript',
           'Tailwind CSS',
-          'Node.js',
-          'Laravel',
-          'Prisma',
+          'TypeScript',
+          'HTML',
+          'CSS',
           'MongoDB',
-          'PostgreSQL',
-          'Appwrite',
-          'Docker',
+          'SQL',
+          'Git',
+          'C (basic)',
+          'Java (basic)',
         ].map((tech) => (
           <li key={tech} className='bg-gray-700 px-3 py-1 rounded-md'>
             {tech}

@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router';
+import { formatDate } from '~/lib/formatDate';
 import type {Post} from '~/types';
 
 
@@ -35,7 +36,7 @@ const LatestPosts = ({ posts, limit = 3 }:LatestPostsProps) => {
               {post.excerpt}
             </p>
             <span className='block mt-3 text-xs text-gray-400'>
-              {new Date(post.date).toLocaleDateString()}
+              {formatDate(post.date)}
             </span>
           </Link>
         ))}

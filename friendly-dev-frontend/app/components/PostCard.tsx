@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router';
+import { formatDate } from '~/lib/formatDate';
 import type { PostMeta } from '~/types';
 
 const PostCard = ({ post }: { post: PostMeta }) => {
@@ -7,7 +8,7 @@ const PostCard = ({ post }: { post: PostMeta }) => {
     <article key={post.slug} className='bg-gray-800 p-6 rounded-lg shadow'>
       <h3 className='text-2xl font-semibold text-blue-400'>{post.title}</h3>
       <p className='text-sm text-gray-400 mb-2'>
-        {new Date(post.date).toLocaleDateString()}
+        {formatDate(post.date)}
       </p>
       {post.image && (
         <img

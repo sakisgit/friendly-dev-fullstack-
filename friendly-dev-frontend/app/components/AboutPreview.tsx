@@ -12,9 +12,9 @@ const AboutPreview = () => {
       <div>
         <h2 className='text-2xl font-bold text-white mb-2'>👋 About Me</h2>
         <p className='text-gray-200 mb-4 max-w 4xl'>
-          I’m Brad — a self-taught developer and educator passionate about
-          building friendly digital experiences and helping others grow into
-          confident modern devs.
+          I’m Sakis — a Junior Web Developer with a Computer Science background. 
+          I build modern web and mobile apps, and I’m continuously learning new technologies with the goal of 
+          becoming a full-stack developer.
         </p>
         <Link
           to='/about'
