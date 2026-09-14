@@ -35,7 +35,7 @@ const AboutPage = () => {
 
       {/* Bio Section */}
       <div className='mb-12'>
-        <h2 className='text-2xl font-semibold text-white mb-4'>My Goal</h2>
+        <h2 className='text-2xl font-semibold text-white mb-4'>🎯 My Goal</h2>
         <p className='text-gray-300 leading-relaxed'>
           My goal is to grow as a developer by building real-world web and mobile applications, 
           improving my technical skills, and gaining hands-on experience. 
