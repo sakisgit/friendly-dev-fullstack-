@@ -3,7 +3,7 @@ import type {Route} from "./+types/details";
 import type { Project, StrapiProject } from "~/types";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
-import { getApiUrl } from "~/lib/api";
+import { getApiUrl, getImageUrl } from "~/lib/api";
 
 export async function loader({
     request, 
@@ -31,9 +31,7 @@ export async function loader({
         p.image?.url ??
         "";
 
-    const image = rawImageUrl
-        ? `${rawImageUrl}`
-        : "/images/no-image.png";
+    const image = getImageUrl(rawImageUrl);
 
     const project: Project = {
         id: String(p.id),

@@ -2,7 +2,7 @@
 import type { Route } from './+types/details';
 import type { StrapiResponse, StrapiPost, PostMeta } from '~/types';
 import { Link } from 'react-router';
-import { getApiUrl } from '~/lib/api';
+import { getApiUrl, getImageUrl } from '~/lib/api';
 import { formatDate } from '~/lib/formatDate';
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -31,9 +31,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     title: item.title,
     excerpt: item.excerpt,
     date: item.date,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
+    image: getImageUrl(item.image?.url),
   };
 
   return { post, body: item.body };

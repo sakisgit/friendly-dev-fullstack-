@@ -8,3 +8,14 @@ export function getApiUrl(): string {
   return DEFAULT_API_URL;
 }
 
+
+const FALLBACK_IMAGE = "/images/no-image.png";
+
+// Old Strapi media records still point at the previous Cloudinary cloud name.
+const LEGACY_CLOUDINARY_CLOUD = "/duix09urz/";
+const CLOUDINARY_CLOUD = "/sakis-dev/";
+
+export function getImageUrl(url?: string | null): string {
+  if (!url) return FALLBACK_IMAGE;
+  return url.replace(LEGACY_CLOUDINARY_CLOUD, CLOUDINARY_CLOUD);
+}

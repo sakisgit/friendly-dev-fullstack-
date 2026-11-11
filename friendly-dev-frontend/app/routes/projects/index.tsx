@@ -5,7 +5,7 @@ import type { Project, StrapiProject, StrapiResponse } from '~/types';
 import ProjectCard from '~/components/ProjectCard';
 import Pagination from '~/components/Pagination';
 import { AnimatePresence, motion } from 'framer-motion';
-import { getApiUrl } from '~/lib/api';
+import { getApiUrl, getImageUrl } from '~/lib/api';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -28,7 +28,7 @@ export async function loader({ request }: Route.LoaderArgs): Promise<{ projects:
       documentId: item.documentId,
       title: item.title,
       description: item.description,
-      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+      image: getImageUrl(item.image?.url),
       url: item.url,
       date: item.date,
       category: item.category,

@@ -5,7 +5,7 @@ import type { PostMeta, StrapiResponse, StrapiPost } from "~/types";
 import PostCard from "~/components/PostCard";
 import Pagination from "~/components/Pagination";
 import PostFilter from "~/components/PostFilter";
-import { getApiUrl } from "~/lib/api";
+import { getApiUrl, getImageUrl } from "~/lib/api";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -33,7 +33,7 @@ export async function loader({
       slug: item.slug,
       date: item.date,
       body: item.body,
-      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+      image: getImageUrl(item.image?.url),
     }));
     return { posts };
   } catch {

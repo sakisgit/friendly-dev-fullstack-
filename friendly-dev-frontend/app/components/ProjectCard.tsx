@@ -15,7 +15,7 @@ const ProjectCard = ({ project }: {project: Project} ) => {
             <img 
                 src={project.image} 
                 alt={project.title}
-                className='w-full h-40 object-hover'
+                className='w-full h-40 object-cover'
             />
             <div className="p-5">
                 <h3 className="text-3xl font-semibold text-blue-400 mb-1 ">

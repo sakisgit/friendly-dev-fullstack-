@@ -10,7 +10,7 @@ import type {
   StrapiProject,
   StrapiPost,
 } from "~/types";
-import { getApiUrl } from "~/lib/api";
+import { getApiUrl, getImageUrl } from "~/lib/api";
 
 
 export function meta({}: Route.MetaArgs) {
@@ -42,7 +42,7 @@ export async function loader({
       documentId: item.documentId,
       title: item.title,
       description: item.description,
-      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+      image: getImageUrl(item.image?.url),
       url: item.url,
       date: item.date,
       category: item.category,
@@ -56,7 +56,7 @@ export async function loader({
       excerpt: item.excerpt,
       date: item.date,
       body: item.body,
-      image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
+      image: getImageUrl(item.image?.url),
     }));
 
     return { projects, posts };
