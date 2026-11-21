@@ -32,8 +32,9 @@ export async function loader({ request }: Route.LoaderArgs): Promise<{ projects:
       url: item.url,
       date: item.date,
       category: item.category,
-      featured: item.featured
-    }));
+      featured: item.featured,
+      inProgress: item.inProgress ?? false,
+    })).filter((project) => !project.inProgress);
 
     return { projects };
   } catch {

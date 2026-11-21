@@ -47,6 +47,10 @@
     "featured": {
       "type": "boolean",
       "default": false
+    },
+    "inProgress": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

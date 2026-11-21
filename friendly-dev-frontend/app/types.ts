@@ -9,6 +9,7 @@ export type Project = {
   date: string;
   category: string;
   featured: boolean;
+  inProgress?: boolean;
 };
 
 export type Post = {
@@ -52,6 +53,7 @@ export type StrapiProject = {
   date: string;
   category: string;
   featured: boolean;
+  inProgress?: boolean;
 };
 
 export type StrapiPost = {
