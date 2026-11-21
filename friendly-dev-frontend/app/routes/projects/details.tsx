@@ -4,6 +4,7 @@ import type { Project, StrapiProject } from "~/types";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
 import { getApiUrl, getImageUrl } from "~/lib/api";
+import InProgressBadge from "~/components/InProgressBadge";
 
 export async function loader({
     request, 
@@ -43,6 +44,7 @@ export async function loader({
         date: p.date,
         category: p.category,
         featured: p.featured,
+        inProgress: p.inProgress ?? false,
     };
 
     return project;
@@ -80,7 +82,10 @@ const ProjectDetailsPage = ({loaderData}:Route.ComponentProps) => {
             </div>
                 
             <div>
-                    <h1 className="text-3xl font-bolt text-blue-400 mb-4 ">{project.title}</h1>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <h1 className="text-3xl font-bold text-blue-400">{project.title}</h1>
+                        {project.inProgress && <InProgressBadge />}
+                    </div>
                     <p className="text-gray-300 text-sm mb-4">
                         {/* {new Date(project.date).toLocaleDateString('en-GB')} - {project.category} */}
                         {formatDate(project.date)} - {project.category}
@@ -88,13 +93,20 @@ const ProjectDetailsPage = ({loaderData}:Route.ComponentProps) => {
                     <p className="text-gray-200 mb-6 ">
                         {project.description}
                     </p>
-                    <a 
-                        href={project.url} 
-                        target="_blanked"
-                        className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition"
-                    >
-                        View Live Site →    
-                    </a>
+                    {project.inProgress && !project.url ? (
+                        <span className="inline-block text-gray-400 bg-gray-800 border border-gray-700 px-6 py-2 rounded cursor-default">
+                            🚧 Live demo coming soon
+                        </span>
+                    ) : (
+                        <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded transition"
+                        >
+                            {project.inProgress ? 'View Early Preview →' : 'View Live Site →'}
+                        </a>
+                    )}
             </div>
         </div>
     </>

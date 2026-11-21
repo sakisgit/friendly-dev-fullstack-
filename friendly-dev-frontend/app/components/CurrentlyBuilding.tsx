@@ -1,4 +1,6 @@
+import { Link } from "react-router";
 import type { Project } from "~/types";
+import InProgressBadge from "./InProgressBadge";
 
 const CurrentlyBuilding = ({ projects }: { projects: Project[] }) => {
   if (projects.length === 0) return null;
@@ -11,9 +13,10 @@ const CurrentlyBuilding = ({ projects }: { projects: Project[] }) => {
 
       <div className="space-y-4">
         {projects.map((project) => (
-          <div
+          <Link
             key={project.id}
-            className="flex flex-col sm:flex-row gap-5 bg-gray-800 border border-gray-700 rounded-lg overflow-hidden"
+            to={`/projects/${project.documentId}`}
+            className="flex flex-col sm:flex-row gap-5 bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-sm transform transition duration-300 hover:scale-[1.02] hover:shadow-md"
           >
             <img
               src={project.image}
@@ -25,15 +28,12 @@ const CurrentlyBuilding = ({ projects }: { projects: Project[] }) => {
                 <h3 className="text-xl font-semibold text-blue-400">
                   {project.title}
                 </h3>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-2.5 py-0.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
-                  In Progress
-                </span>
+                <InProgressBadge />
               </div>
               <p className="text-sm text-gray-300 mb-3">{project.description}</p>
               <span className="text-sm text-gray-400">{project.category}</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
