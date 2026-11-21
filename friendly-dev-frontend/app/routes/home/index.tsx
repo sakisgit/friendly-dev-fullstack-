@@ -27,7 +27,7 @@ export async function loader({
   const apiUrl = getApiUrl();
   try {
     const [projectsRes, postsRes] = await Promise.all([
-      fetch(`${apiUrl}/projects?filters[featured][$eq]=true&populate=*`),
+      fetch(`${apiUrl}/projects?filters[featured][$eq]=true&sort[0]=date:desc&populate=*`),
       fetch(`${apiUrl}/posts?sort[0]=date:desc&pagination[limit]=3&populate=image`),
     ]);
     if (!projectsRes.ok || !postsRes.ok) {

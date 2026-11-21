@@ -17,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({ request }: Route.LoaderArgs): Promise<{ projects: Project[] }>{
   const apiUrl = getApiUrl();
   try {
-    const res = await fetch(`${apiUrl}/projects?populate=*`);
+    const res = await fetch(`${apiUrl}/projects?sort[0]=date:desc&populate=*`);
     if (!res.ok) {
       return { projects: [] };
     }
